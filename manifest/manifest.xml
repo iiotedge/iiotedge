@@ -1,0 +1,27 @@
+<manifest>
+    <environment name="dev">
+        <repo name="configuration" url="@github.com/IotMining/configuration.git" branch="main" path="configuration/" />
+        <repo name="monitoring-agent" url="@github.com/IotMining/monitoring-agent.git" branch="main" path="monitoring-agent" />
+        <repo name="jenkins" url="@github.com/IotMining/jenkins.git" branch="main" path="jenkins/" />
+        <repo name="k8s" url="@github.com/IotMining/k8s.git" branch="main" path="k8s/" />
+        <repo name="microservices" url="@github.com/IotMining/microservices.git" branch="main" path="microservices" />
+    </environment>
+
+    <environment name="prod">
+        <repo name="configuration" url="@github.com/IotMining/configuration.git" branch="main" path="configuration/" />
+        <repo name="monitoring-agent" url="@github.com/IotMining/monitoring-agent.git" branch="main" path="monitoring-agent" />
+        <repo name="jenkins" url="@github.com/IotMining/jenkins.git" branch="main" path="jenkins/" />
+        <repo name="k8s" url="@github.com/IotMining/k8s.git" branch="main" path="k8s/" />
+        <repo name="microservices" url="@github.com/IotMining/microservices.git" branch="main" path="microservices" />
+    </environment>
+
+    <environment name="staging">
+        <repo name="configuration" url="@github.com/IotMining/configuration.git" branch="main" path="configuration/" />
+        <repo name="monitoring-agent" url="@github.com/IotMining/monitoring-agent.git" branch="main" path="monitoring-agent" />
+        <repo name="jenkins" url="@github.com/IotMining/jenkins.git" branch="main" path="jenkins/" />
+        <repo name="k8s" url="@github.com/IotMining/k8s.git" branch="main" path="k8s/" />
+        <repo name="microservices" url="@github.com/IotMining/microservices.git" branch="main" path="microservices" />
+    </environment>
+</manifest>
+
+
