@@ -1,9 +1,10 @@
 <manifest>
     <environment name="dev">
+        <repo name="common" url="@github.com/IotMining/common.git" branch="main" path="common/" />
         <repo name="configuration" url="@github.com/IotMining/configuration.git" branch="main" path="configuration/" />
         <repo name="monitoring-agent" url="@github.com/IotMining/monitoring-agent.git" branch="main" path="monitoring-agent" />
+        <repo name="infrastructure" url="@github.com/IotMining/infrastructure.git" branch="main" path="infrastructure" />
         <repo name="jenkins" url="@github.com/IotMining/jenkins.git" branch="main" path="jenkins/" />
-        <repo name="k8s" url="@github.com/IotMining/k8s.git" branch="main" path="k8s/" />
         <repo name="microservices" url="@github.com/IotMining/microservices.git" branch="main" path="microservices" />
     </environment>
 
