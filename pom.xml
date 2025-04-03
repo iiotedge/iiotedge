@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.iotmining</groupId>
-    <artifactId>iotmining-microservice</artifactId>
+    <artifactId>iotmining-technology</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
-    <name>IoT-Mining</name>
-    <description>Demo project for Spring Boot</description>
+    <name>IoTMining Technology</name>
+    <description>Empowering the Future of IoT with Smart, Scalable, and Secure Solution</description>
     <url/>
     <licenses>
         <license/>
@@ -29,7 +29,9 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
-
+        <sonar.projectKey>${project.artifactId}</sonar.projectKey>
+        <sonar.projectName>${project.name}</sonar.projectName>
+        <sonar.projectVersion>${project.version}</sonar.projectVersion>
     </properties>
 
     <modules>
@@ -87,7 +89,6 @@
     </dependencyManagement>
 
     <build>
-<!--        <directory>${project.basedir}/out</directory>-->
         <plugins>
             <!-- SonarQube Plugin -->
             <plugin>
@@ -95,41 +96,6 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>5.0.0.4389</version>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-                <configuration>
-                    <outputDirectory>${project.basedir}/out</outputDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <active.profile>dev</active.profile>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>  <!-- Set as default -->
-            </activation>
-        </profile>
-
-        <profile>
-            <id>prod</id>
-            <properties>
-                <active.profile>prod</active.profile>
-            </properties>
-        </profile>
-    </profiles>
-
 </project>
