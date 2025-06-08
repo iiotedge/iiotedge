@@ -2,12 +2,12 @@
 
 set -e  # Exit on error
 
-echo " ██╗ ██████╗ ████████╗    ███╗   ███╗██╗███╗   ██╗██╗███╗   ██╗██╗███╗   ██╗ ██████╗     "
-echo " ██║██╔═══██╗╚══██╔══╝    ████╗ ████║██║████╗  ██║██║████╗  ██║██║████╗  ██║██╔════╝     "
-echo " ██║██║   ██║   ██║       ██╔████╔██║██║██╔██╗ ██║██║██╔██╗ ██║██║██╔██╗ ██║██║  ███╗    "
-echo " ██║██║   ██║   ██║       ██║╚██╔╝██║██║██║╚██╗██║██║██║╚██╗██║██║██║╚██╗██║██║   ██║    "
-echo " ██║╚██████╔╝   ██║       ██║ ╚═╝ ██║██║██║ ╚████║██║██║ ╚████║██║██║ ╚████║╚██████╔╝    "
-echo " ╚═╝ ╚═════╝    ╚═╝       ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝     "
+echo " ██╗ ██████╗ ████████╗    ███╗   ███╗██╗███╗   ██╗██╗███╗   ██╗ ██████╗      "
+echo " ██║██╔═══██╗╚══██╔══╝    ████╗ ████║██║████╗  ██║██║████╗  ██║ ██╔════╝     "
+echo " ██║██║   ██║   ██║       ██╔████╔██║██║██╔██╗ ██║██║██╔██╗ ██║ ██║  ███╗    "
+echo " ██║██║   ██║   ██║       ██║╚██╔╝██║██║██║╚██╗██║██║██║╚██╗██║ ██║   ██║    "
+echo " ██║╚██████╔╝   ██║       ██║ ╚═╝ ██║██║██║ ╚████║██║██║ ╚████║ ╚██████╔╝    "
+echo " ╚═╝ ╚═════╝    ╚═╝       ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝      "
 
 echo "🔍 Checking environment variables..."
 if [ -f .env ]; then
@@ -20,11 +20,10 @@ read -r AUTH_METHOD
 
 if [ "$AUTH_METHOD" == "1" ]; then
     if [ -z "$GITHUB_PAT" ]; then
-        echo "❌ Error: GITHUB_PAT not set!"
-        exit 1
-    else
-        echo "   ➜ GITHUB_PAT: ghp_****** (Hidden for security)"
+        echo "🔐 GITHUB_PAT not set. Please enter your GitHub PAT:"
+        read -rs GITHUB_PAT
     fi
+    echo "🔐 Using PAT (hidden)"
     USE_SSH=false
 elif [ "$AUTH_METHOD" == "2" ]; then
     USE_SSH=true
@@ -68,15 +67,17 @@ while IFS= read -r line; do
     DEST_DIR=$(echo "$line" | sed -n 's/.*path=\"\([^\"]*\)\".*/\1/p')
 
     echo "🔍 Processing repository: $REPO_NAME"
-    
+
     if [ "$USE_SSH" == "true" ]; then
-        REPO_URL="git@github.com:${REPO_URL#https://github.com/}"
+        CLEAN_URL=$(echo "$REPO_URL" | sed -E 's|https?://github\.com/||')
+        REPO_URL="git@github.com:${CLEAN_URL}"
         echo "🔗 URL: $REPO_URL (Using SSH)"
     else
-        REPO_URL="https://${GITHUB_PAT}${REPO_URL#https://}"
+        CLEAN_URL=$(echo "$REPO_URL" | sed -E 's|https?://github\.com/||')
+        REPO_URL="https://${GITHUB_PAT}@github.com/${CLEAN_URL}"
         echo "🔗 URL: $REPO_URL (Using PAT)"
     fi
-    
+
     echo "📂 Repo: $REPO_NAME → $DEST_DIR"
     echo "🌿 Branch: $BRANCH"
 
@@ -92,7 +93,7 @@ while IFS= read -r line; do
         if git clone --branch "$BRANCH" --recurse-submodules "$REPO_URL" "$DEST_DIR"; then
             echo "✅ Successfully cloned $REPO_NAME"
         else
-            echo "❌ Error cloning $REPO_NAME! Check your authentication method."
+            echo "❌ Error cloning $REPO_NAME! Check your authentication method or URL."
             exit 1
         fi
     fi
@@ -101,7 +102,7 @@ while IFS= read -r line; do
     echo "🔄 Updating submodules for $REPO_NAME..."
     git -C "$DEST_DIR" submodule update --init --recursive
 
-    # Ensure submodules track the correct branch instead of being locked to a commit
+    # Ensure submodules track the correct branch
     echo "🔄 Ensuring submodules track the latest branch..."
     git -C "$DEST_DIR" submodule foreach --recursive "git checkout main && git pull origin main"
 
