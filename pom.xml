@@ -37,6 +37,9 @@
     <modules>
         <module>monitoring-agent</module>
         <module>microservices</module>
+        <module>common</module>
+        <module>common/interfaces</module>
+        <module>common/base</module>
     </modules>
 
     <dependencyManagement>
