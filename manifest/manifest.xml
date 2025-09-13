@@ -1,26 +1,26 @@
 <manifest>
     <environment name="dev">
-        <repo name="common" url="https://github.com/iotmining/common.git" branch="main" path="common/"/>
-        <repo name="configuration" url="https://github.com/iotmining/configuration.git" branch="main" path="configuration/"/>
-        <repo name="monitoring-agent" url="https://github.com/iotmining/monitoring-agent.git" branch="main" path="monitoring-agent"/>
-        <repo name="infrastructure" url="https://github.com/iotmining/infrastructure.git" branch="main" path="infrastructure"/>
-        <repo name="jenkins" url="https://github.com/iotmining/jenkins.git" branch="main" path="jenkins/"/>
-        <repo name="microservices" url="https://github.com/iotmining/microservices.git" branch="main" path="microservices"/>
+        <repo name="common" url="https://github.com/iiotedge/common.git" branch="main" path="common/"/>
+        <repo name="configuration" url="https://github.com/iiotedge/configuration.git" branch="main" path="configuration/"/>
+        <repo name="monitoring-agent" url="https://github.com/iiotedge/monitoring-agent.git" branch="main" path="monitoring-agent"/>
+        <repo name="infrastructure" url="https://github.com/iiotedge/infrastructure.git" branch="main" path="infrastructure"/>
+        <repo name="jenkins" url="https://github.com/iiotedge/jenkins.git" branch="main" path="jenkins/"/>
+        <repo name="microservices" url="https://github.com/iiotedge/microservices.git" branch="main" path="microservices"/>
     </environment>
 
     <environment name="prod">
-        <repo name="configuration" url="https://github.com/iotmining/configuration.git" branch="main" path="configuration/"/>
-        <repo name="monitoring-agent" url="https://github.com/iotmining/monitoring-agent.git" branch="main" path="monitoring-agent"/>
-        <repo name="jenkins" url="https://github.com/iotmining/jenkins.git" branch="main" path="jenkins/"/>
-        <repo name="k8s" url="https://github.com/iotmining/k8s.git" branch="main" path="k8s/"/>
-        <repo name="microservices" url="https://github.com/iotmining/microservices.git" branch="main" path="microservices"/>
+        <repo name="configuration" url="https://github.com/iiotedge/configuration.git" branch="main" path="configuration/"/>
+        <repo name="monitoring-agent" url="https://github.com/iiotedge/monitoring-agent.git" branch="main" path="monitoring-agent"/>
+        <repo name="jenkins" url="https://github.com/iiotedge/jenkins.git" branch="main" path="jenkins/"/>
+        <repo name="k8s" url="https://github.com/iiotedge/k8s.git" branch="main" path="k8s/"/>
+        <repo name="microservices" url="https://github.com/iiotedge/microservices.git" branch="main" path="microservices"/>
     </environment>
 
     <environment name="staging">
-        <repo name="configuration" url="https://github.com/iotmining/configuration.git" branch="main" path="configuration/"/>
-        <repo name="monitoring-agent" url="https://github.com/iotmining/monitoring-agent.git" branch="main" path="monitoring-agent"/>
-        <repo name="jenkins" url="https://github.com/iotmining/jenkins.git" branch="main" path="jenkins/"/>
-        <repo name="k8s" url="https://github.com/iotmining/k8s.git" branch="main" path="k8s/"/>
-        <repo name="microservices" url="https://github.com/iotmining/microservices.git" branch="main" path="microservices"/>
+        <repo name="configuration" url="https://github.com/iiotedge/configuration.git" branch="main" path="configuration/"/>
+        <repo name="monitoring-agent" url="https://github.com/iiotedge/monitoring-agent.git" branch="main" path="monitoring-agent"/>
+        <repo name="jenkins" url="https://github.com/iiotedge/jenkins.git" branch="main" path="jenkins/"/>
+        <repo name="k8s" url="https://github.com/iiotedge/k8s.git" branch="main" path="k8s/"/>
+        <repo name="microservices" url="https://github.com/iiotedge/microservices.git" branch="main" path="microservices"/>
     </environment>
 </manifest>
